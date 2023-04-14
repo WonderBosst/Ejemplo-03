@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Estudiantes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+
+    <ion-row>
+        <ion-col size="8">
+          <ion-searchbar placeholder="Buscar por numero de control" (ionChange)="filterStudent($event)" #ionBusqueda>
+
+          </ion-searchbar>
+        </ion-col><!--Numero de Control-->
+        <ion-col size="4">
+          <ion-button color="success" expand="block" shape="round">
+            <ion-icon name="checkmark"></ion-icon>
+            <ion-label>Aceptar</ion-label>
+          </ion-button>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item-sliding *ngFor="let s of fStudents; let i = index;">
+            <ion-item>
+              <div class="divContenido">
+                <ion-col size="1">
+                  <ion-avatar>
+                    <img src="{{s.photo}}" />
+                  </ion-avatar>
+                </ion-col>
+                <p class="pContenidoHijo">{{s.controlNumber}}</p>
+                <p class="pContenidoHijo">{{s.name}}</p>
+                <p class="pContenidoHijo">{{s.curp}}</p>
+                <p class="pContenidoHijo">{{s.age}}</p>
+                <p class="pContenidoHijo">{{s.nip}}</p>
+                <p class="pContenidoHijo">{{s.email}}</p>
+                <p class="pContenidoHijo">{{s.career}}</p>
+                <ion-col size="2">
+                  <ion-button
+                    (click)="deleteStudent(s.controlNumber)"
+                    fill="outline"
+                    color="danger"
+                    class="ion-margin-end"
+                  >
+                    <ion-icon
+                      slot="icon-only"
+                      name="trash"
+                      color="danger"
+                    ></ion-icon>
+                  </ion-button>
+                  <ion-button
+                    [routerLink]="['/tabs', 'tab3', s.controlNumber]"
+                    fill="outline"
+                  >
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </div>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,139 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Nuevo Estudiante
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<form [formGroup]="myForm">
+  <ion-grid>
+    <!--Numero de control-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Numero de Control</ion-label>
+          <ion-input formControlName="controlNumber" ></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['controlNumber']">
+          <div class="error-message" *ngIf="myForm.get('controlNumber')?.hasError(val.type)&&myForm.get('controlNumber')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Nombre-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="name"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['name']">
+          <div class="error-message" *ngIf="myForm.get('name')?.hasError(val.type)&&myForm.get('name')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Curp-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Curp</ion-label>
+          <ion-input formControlName="curp"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['curp']">
+          <div class="error-message" *ngIf="myForm.get('curp')?.hasError(val.type)&&myForm.get('curp')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Edad-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+          <ion-input type="number" formControlName="age"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['age']">
+          <div class="error-message" *ngIf="myForm.get('age')?.hasError(val.type)&&myForm.get('age')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Nip-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">NIP</ion-label>
+          <ion-input type="number" formControlName="nip"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['nip']">
+          <div class="error-message" *ngIf="myForm.get('nip')?.hasError(val.type)&&myForm.get('nip')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Email-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['email']">
+          <div class="error-message" *ngIf="myForm.get('email')?.hasError(val.type)&&myForm.get('email')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Carrera-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Carrera</ion-label>
+          <ion-select placeholder="Carreras" interface="popover" formControlName="career" value="">
+            <ion-select-option>ISC</ion-select-option>
+            <ion-select-option>II</ion-select-option>
+            <ion-select-option>IGE</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ng-container *ngFor="let val of validationMessages['career']">
+          <div class="error-message" *ngIf="myForm.get('career')?.hasError(val.type)&&myForm.get('career')?.touched">
+            {{val.message}}
+          </div>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+    <!--Foto-->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Foto</ion-label>
+          <ion-input formControlName="photo" (keydown.enter)="newStudent()"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button 
+          color="success" 
+          expand="block" 
+          shape="round" 
+          (click)="newStudent()"> <!-- [disabled]="!myForm.valid" -->
+          <ion-icon name="checkmark"></ion-icon>&nbsp;
+          <div>Guardar</div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</form>
+</ion-content>
